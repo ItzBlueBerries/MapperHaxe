@@ -14,3 +14,4 @@ Your own personal charting workspace, doesn't have to be special, doesn't have t
 
 - [FruitsyOG (Lead Programmer / Creator)](https://twitter.com/FruitsyOG)
 - [NLD-Dev (Coding Help)](https://twitter.com/LocalizedDeku)
+- [KadeDeveloper (Engine Support)](https://www.youtube.com/c/KadeDev)

@@ -42,6 +42,7 @@ class SelectorState extends MusicBeatState
                     // trace(songSelectBox.text);
                     FlxG.save.data.chosenSong = songSelectBox.text;
                     FlxG.switchState(new ChartingState());
+                    trace('\nSong Selected Successfully!\nSong Selected: ' + FlxG.save.data.chosenSong);
                  });
             selectConfirm.screenCenter(X);
 

@@ -37,6 +37,7 @@ import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
 import lime.app.Application;
+import mapper.SelectorState;
 
 #if windows
 import Discord.DiscordClient;
@@ -682,6 +683,9 @@ class ChartingState extends MusicBeatState
 			snap = 192;
 		if (snap <= 1)
 			snap = 1;*/
+
+		if (FlxG.keys.justPressed.ESCAPE)
+			FlxG.switchState(new SelectorState());
 
 		if (FlxG.keys.justPressed.CONTROL)
 			doSnapShit = !doSnapShit;

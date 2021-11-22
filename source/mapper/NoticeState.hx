@@ -78,8 +78,8 @@ class NoticeState extends FlxState
        
                         Welcome to MapperHaxe Editor.
         \nThis is personalized for Friday Night Funkin' Charting only, nothing else.
-           \nYou will be immediately added to the Chart Editor, the song is automatically set to test.
-                Change the song name to your song to chart it.
+           \nWhen you continue, you will be prompted to select a song, then you will be added to the chart editor directly.
+                This engine was created by FruitsyOG with Coding Help by NLD (Engine Support by KadeDev), enjoy!
                         \nPress ENTER to start.
                         \nPress R to check for new versions.
                         \nPress W for the WIKI Support.
