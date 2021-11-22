@@ -11,6 +11,11 @@ import lime.app.Application;
 import flixel.graphics.FlxGraphic;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxEase.EaseFunction;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxTween.TweenOptions;
+import flixel.util.FlxTimer;
 
 #if windows
 import Discord.DiscordClient;
@@ -24,6 +29,7 @@ class NoticeState extends FlxState
 {
 
     var noticeText:FlxText;
+    var options:TweenOptions = {type: PINGPONG};
 
 	override public function create():Void
     {
@@ -75,6 +81,8 @@ class NoticeState extends FlxState
            \nYou will be immediately added to the Chart Editor, the song is automatically set to test.
                 Change the song name to your song to chart it.
                         \nPress ENTER to start.
+                        \nPress R to check for new versions.
+                        \nPress W for the WIKI Support.
 
         ";
         noticeText.screenCenter();
@@ -83,13 +91,23 @@ class NoticeState extends FlxState
         noticeText.y -= 150;
 
         add(noticeText);
+
+        FlxTween.color(noticeText, 1.3, FlxColor.WHITE, FlxColor.BLACK, options);
     }
 
 	override public function update(elapsed:Float):Void
     {
         if (FlxG.keys.justPressed.ENTER)
-            FlxG.switchState(new ChartingState());
+            FlxG.switchState(new SelectorState());
+
+        if (FlxG.keys.justPressed.R)
+            FlxG.openURL('https://github.com/ItzBlueBerries/MapperHaxe/releases');
+
+        if (FlxG.keys.justPressed.W)
+            FlxG.openURL('https://github.com/ItzBlueBerries/MapperHaxe/wiki');
+
+        // FlxTween.tween(noticeText, { alpha: 0 }, 0.7, options);
+
         super.update(elapsed);
     }
-
 }

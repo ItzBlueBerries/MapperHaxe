@@ -112,24 +112,18 @@ class ChartingState extends MusicBeatState
 
 		curSection = lastSection;
 
-		if (PlayState.SONG != null)
-			_song = PlayState.SONG;
-		else
-		{
-			_song = {
-				song: 'Test',
-				notes: [],
-				bpm: 150,
-				needsVoices: true,
-				player1: 'bf',
-				player2: 'dad',
-				gfVersion: 'gf',
-				noteStyle: 'normal',
-				stage: 'stage',
-				speed: 1,
-				validScore: false
-			};
+		var songFormat = StringTools.replace(FlxG.save.data.chosenSong, " ", "-");
+		switch (songFormat) {
+			case 'Dad-Battle': songFormat = 'Dadbattle';
+			case 'Philly-Nice': songFormat = 'Philly';
 		}
+
+		var poop:String = Highscore.formatSong(songFormat, 1);
+
+		trace(poop);
+		
+		_song = Song.loadFromJson(poop, FlxG.save.data.chosenSong);
+		PlayState.SONG = Song.loadFromJson(poop, FlxG.save.data.chosenSong);
 
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
