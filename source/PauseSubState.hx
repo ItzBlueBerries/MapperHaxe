@@ -25,7 +25,7 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'BotPlay', 'Chart Editor', 'Exit Game'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'BotPlay', 'Chart Editor', 'CPU Strums', 'Exit Game'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -192,6 +192,11 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.save.data.botplay = false;
 				case "Chart Editor":
 					FlxG.switchState(new ChartingState());
+				case "CPU Strums":
+					if (!FlxG.save.data.cpuStrums)
+						FlxG.save.data.cpuStrums = true;
+					else
+						FlxG.save.data.cpuStrums = false;
 				case "Exit Game":
 					#if cpp
 					Sys.exit(0);
