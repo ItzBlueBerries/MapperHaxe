@@ -111,6 +111,11 @@ class ChartingState extends MusicBeatState
 	override function create()
 	{
 
+		#if windows
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("Chart Editor", null);
+		#end
+
 		curSection = lastSection;
 
 		var songFormat = StringTools.replace(FlxG.save.data.chosenSong, " ", "-");

@@ -11,6 +11,10 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.TweenOptions;
 import flixel.ui.FlxButton;
 
+#if windows
+import Discord.DiscordClient;
+#end
+
 class SelectorState extends MusicBeatState
 {
 
@@ -21,6 +25,11 @@ class SelectorState extends MusicBeatState
 
     override public function create():Void
         {
+            #if windows
+            // Updating Discord Rich Presence
+            DiscordClient.changePresence("Selecting Song", null);
+            #end
+
             FlxG.mouse.visible = true;
 
             instructions = new FlxText(0, 0);

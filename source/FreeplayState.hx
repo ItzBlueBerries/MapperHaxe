@@ -37,6 +37,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.switchState(new ChartingState());
+
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
 		for (i in 0...initSonglist.length)
