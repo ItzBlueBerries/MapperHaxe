@@ -689,7 +689,7 @@ class ChartingState extends MusicBeatState
 		if (snap <= 1)
 			snap = 1;*/
 
-		if (FlxG.keys.justPressed.ESCAPE)
+		if (FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.BACKSPACE)
 			FlxG.switchState(new SelectorState());
 
 		if (FlxG.keys.justPressed.CONTROL)

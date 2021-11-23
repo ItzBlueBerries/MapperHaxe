@@ -30,6 +30,7 @@ class NoticeState extends FlxState
 
     var noticeText:FlxText;
     var options:TweenOptions = {type: PINGPONG};
+    var notice:String;
 
 	override public function create():Void
     {
@@ -75,29 +76,35 @@ class NoticeState extends FlxState
         DiscordClient.changePresence("Notice! Notice!", null);
         #end
 
+         notice = 
+            "                           Welcome to MapperHaxe Editor.             
+            \n\nThis is personalized for Friday Night Funkin' Charting mostly, nothing else mainly.
+            \nWhen you continue, you will be prompted to select a song, then you will be added to the chart editor directly.
+            \nThis engine was created by FruitsyOG, more credits listed in the credits menu.
+            \n\nPress ENTER to continue. | Press R to check for new releases.
+            \nPress W for the WIKI Support. | Press C for the credits menu.
+            ";
+
         FlxG.mouse.visible = false;
 
         noticeText = new FlxText(0, 0);
 		noticeText.borderColor = FlxColor.WHITE;
-        noticeText.text = "
-       
-                        Welcome to MapperHaxe Editor.
-        \nThis is personalized for Friday Night Funkin' Charting only, nothing else.
-           \nWhen you continue, you will be prompted to select a song, then you will be added to the chart editor directly.
-                This engine was created by FruitsyOG with Coding Help by NLD (Engine Support by KadeDev), enjoy!
-                        \nPress ENTER to start.
-                        \nPress R to check for new versions.
-                        \nPress W for the WIKI Support.
-
-        ";
+        noticeText.text = notice;
         noticeText.screenCenter();
         noticeText.size = 15;
         noticeText.x -= 150;
-        noticeText.y -= 150;
+        noticeText.y -= 100;
 
         add(noticeText);
 
         FlxTween.color(noticeText, 1.3, FlxColor.WHITE, FlxColor.BLACK, options);
+		FlxTween.angle(noticeText, noticeText.angle, -4, 1, {ease: FlxEase.quartInOut});
+		
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			if(noticeText.angle == -4) FlxTween.angle(noticeText, noticeText.angle, 4, 1, {ease: FlxEase.quartInOut});
+			else FlxTween.angle(noticeText, noticeText.angle, -4, 1, {ease: FlxEase.quartInOut});
+		}, 0);
     }
 
 	override public function update(elapsed:Float):Void
@@ -110,6 +117,9 @@ class NoticeState extends FlxState
 
         if (FlxG.keys.justPressed.W)
             FlxG.openURL('https://github.com/ItzBlueBerries/MapperHaxe/wiki');
+
+        if (FlxG.keys.justPressed.C)
+            FlxG.switchState(new CreditsState());
 
         // FlxTween.tween(noticeText, { alpha: 0 }, 0.7, options);
 

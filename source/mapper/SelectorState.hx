@@ -60,4 +60,12 @@ class SelectorState extends MusicBeatState
             add(selectConfirm);
         }
 
+    override public function update(elapsed:Float):Void
+    {
+        if (FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.BACKSPACE)
+            FlxG.switchState(new NoticeState());
+
+        super.update(elapsed);
+    }
+
 }
